@@ -209,4 +209,4 @@ if get(g:, 'haskell_backpack', 0)
   highlight def link haskellBackpackDependency Include
 endif
 
-let b:current_syntax = "tidal"
+let b:current_syntax = "timelines"

@@ -65,7 +65,7 @@ function! Unlines(lines)
 endfunction
 
 " vim slime handler
-function! _EscapeText_tidal(text)
+function! _EscapeText_timelines(text)
     let l:text  = Remove_block_comments(a:text)
     let l:lines = Lines(Tab_to_spaces(l:text))
     let l:lines = Remove_line_comments(l:lines)
@@ -77,34 +77,25 @@ endfunction
 " Mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if !exists("g:tidal_no_mappings") || !g:tidal_no_mappings
-  if !hasmapto('<Plug>TidalConfig', 'n')
-    nmap <buffer> <localleader>c <Plug>TidalConfig
+if !exists("g:timelines_no_mappings") || !g:timelines_no_mappings
+  if !hasmapto('<Plug>TimeLinesConfig', 'n')
+    nmap <buffer> <localleader>c <Plug>TimeLinesConfig
   endif
 
-  if !hasmapto('<Plug>TidalRegionSend', 'x')
-    xmap <buffer> <localleader>s  <Plug>TidalRegionSend
-    xmap <buffer> <c-e> <Plug>TidalRegionSend
+  if !hasmapto('<Plug>TimeLinesRegionSend', 'x')
+    xmap <buffer> <localleader>s  <Plug>TimeLinesRegionSend
+    xmap <buffer> <c-e> <Plug>TimeLinesRegionSend
   endif
 
-  if !hasmapto('<Plug>TidalLineSend', 'n')
-    nmap <buffer> <localleader>s  <Plug>TidalLineSend
+  if !hasmapto('<Plug>TimeLinesLineSend', 'n')
+    nmap <buffer> <localleader>s  <Plug>TimeLinesLineSend
   endif
 
-  if !hasmapto('<Plug>TidalParagraphSend', 'n')
-    nmap <buffer> <localleader>ss <Plug>TidalParagraphSend
-    nmap <buffer> <c-e> <Plug>TidalParagraphSend
+  if !hasmapto('<Plug>TimeLinesParagraphSend', 'n')
+    nmap <buffer> <localleader>ss <Plug>TimeLinesParagraphSend
+    nmap <buffer> <c-e> <Plug>TimeLinesParagraphSend
   endif
 
-  imap <buffer> <c-e> <Esc><Plug>TidalParagraphSend<Esc>i<Right>
+  imap <buffer> <c-e> <Esc><Plug>TimeLinesParagraphSend<Esc>i<Right>
 
-  nnoremap <buffer> <localleader>h :TidalHush<cr>
-  nnoremap <buffer> <c-h> :TidalHush<cr>
-  let i = 1
-  while i <= 9
-    execute 'nnoremap <buffer> <localleader>'.i.'  :TidalSilence '.i.'<cr>'
-    execute 'nnoremap <buffer> <c-'.i.'>  :TidalSilence '.i.'<cr>'
-    execute 'nnoremap <buffer> <localleader>s'.i.' :TidalPlay '.i.'<cr>'
-    let i += 1
-  endwhile
 endif
